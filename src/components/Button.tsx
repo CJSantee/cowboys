@@ -1,12 +1,14 @@
 import clsx from "clsx";
 
 interface ButtonProps {
+  onClick: () => void;
   title: string;
   size?: 'sm' | 'md' | 'lg';
 }
-export default function Button({ title, size = 'md' }: ButtonProps) {
+export default function Button({ onClick, title, size = 'md' }: ButtonProps) {
   return (
     <button
+      onClick={onClick}
       className={clsx(
         "relative inline-block group cursor-pointer",
         size === "sm" && "text-lg",
@@ -32,7 +34,10 @@ export default function Button({ title, size = 'md' }: ButtonProps) {
         ></span>
         <span
           className={clsx(
-            "absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"
+            "absolute left-0 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease",
+            size === "sm" && "w-48 h-48",
+            size === "md" && "w-50 h-48",
+            size === "lg" && "w-50 h-48",
           )}
         ></span>
         <span className="relative">{title}</span>

@@ -8,12 +8,26 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center grow justify-between">
-      <Photos />
+      <AuthComponent UnauthenticatedComponent={Unauthenticated}>
+        <Photos />
+      </AuthComponent>
       <AuthComponent>
         <div className="flex items-center justify-center m-5">
-          <Button onClick={() => navigate('/submit')} title="Submit Photo" size="lg" />
+          <Button
+            onClick={() => navigate("/submit")}
+            title="Submit Photo"
+            size="lg"
+          />
         </div>
       </AuthComponent>
     </div>
   );
+}
+
+function Unauthenticated() {
+  return (
+    <div>
+      <p>Login to view cowboy photos.</p>
+    </div>
+  )
 }

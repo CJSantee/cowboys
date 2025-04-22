@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router";
 import Button from "../components/Button";
-import Image from "../components/Image";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <Image />
-      <div className="flex items-center justify-center m-2">
-        <Button onClick={() => {}} title="Submit Photo" size="lg" />
+    <div className="flex flex-col items-center grow justify-between">
+      <div className="flex items-center justify-center m-5">
+        <Button onClick={() => navigate('/submit')} title="Submit Photo" size="lg" />
       </div>
     </div>
   );

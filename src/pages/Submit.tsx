@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import FileInput from "../components/FileInput";
 import Image from "../components/Image";
-import { api } from "@cjsantee/pondero-client";
+import { api, useSession } from "@cjsantee/pondero-client";
 import Datepicker from "../components/Datepicker";
 import CowboySelect from "../components/CowboySelect";
 import ProgressBar from "../components/ProgressBar";
@@ -15,6 +15,7 @@ export default function Submit() {
   const [uploading, setUploading] = useState(false);
 
   const [selectedCowboys, setSelectedCowboys] = useState<number[]>([]);
+  const { access_token } = useSession();
 
   useEffect(() => {
     return () => {
@@ -49,7 +50,9 @@ export default function Submit() {
       date?.toUTCString() || new Date().toUTCString()
     );
     setUploading(true);
-    const { success, data } = await api.upload("/cowboys/photos", formData);
+    const { success, data } = await api.upload("/cowboys/photos", formData, {
+      access_token,
+    });
     if (success) {
       console.log('data', data);
     }

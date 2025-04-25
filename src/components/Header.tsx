@@ -13,7 +13,7 @@ export default function Header() {
       <img src={HatIcon} className="h-18 object-cover" />
       <h1 onClick={() => navigate('/')} className="text-2xl md:text-3xl font-black cursor-pointer">Cowboy Counter</h1>
       {user ? (
-        <div onClick={() => navigate(`/users/${user.username}`)} className="flex items-center gap-1 cursor-pointer">
+        <div onClick={() => navigate('/account')} className="flex items-center gap-1 cursor-pointer">
           <span className="text-1xl md:text-2xl">{user.username}</span>
           <Icon name="person" />
         </div>

@@ -6,10 +6,10 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Home from "./pages/Home.tsx";
 import { SessionProvider } from "@cjsantee/pondero-client";
 import Login from "./pages/Login.tsx";
-import User from "./pages/User.tsx";
 import Submit from "./pages/Submit.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthRoute from "./components/AuthRoute.tsx";
+import Account from "./pages/Account.tsx";
 
 const queryClient = new QueryClient();
 
@@ -31,10 +31,10 @@ createRoot(document.getElementById("root")!).render(
                 }
               />
               <Route
-                path="/users/:username"
+                path="/account"
                 element={
                   <AuthRoute>
-                    <User />
+                    <Account />
                   </AuthRoute>
                 }
               />

@@ -29,6 +29,7 @@ export default function Photos() {
 
   return (
     <div className="flex flex-col items-center justify-center p-3">
+      <h1>Recent Photos</h1>
       <Image url={photos[photoIndex].url} cowboys={photos[photoIndex].cowboys} />
       <div className="flex w-full justify-between py-2">
         <Button title="Previous" onClick={previousPhoto} disabled={!hasPrevious} />

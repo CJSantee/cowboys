@@ -6,3 +6,5 @@ export const cowboyKeys = {
 export const photoKeys = {
   all: ['photos'] as const,
 };
+
+export const leaderboard = ['leaderboard'] as const;

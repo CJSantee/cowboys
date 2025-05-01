@@ -1,35 +1,40 @@
-import { useNavigate } from "react-router";
-import Button from "../components/Button";
-import AuthComponent from "../components/AuthComponent";
-import Photos from "../components/Photos";
-import Leaderboard from "../components/Leaderboard";
+import { Outlet, useNavigate } from "react-router";
 
 export default function Home() {
   const navigate = useNavigate();
 
+  const pages = [
+    {
+      id: "photos",
+      title: "Photos",
+      href: "/",
+    },
+    {
+      id: "leaderboard",
+      title: "Leaderboard",
+      href: "/leaderboard",
+    },
+    {
+      id: "rules",
+      title: "Rules",
+      href: "/rules",
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center grow justify-between">
-      <Leaderboard />
-      <AuthComponent UnauthenticatedComponent={Unauthenticated}>
-        <Photos />
-      </AuthComponent>
-      <AuthComponent>
-        <div className="flex items-center justify-center m-5">
-          <Button
-            onClick={() => navigate("/submit")}
-            title="Submit Photo"
-            size="lg"
-          />
-        </div>
-      </AuthComponent>
+      <div className="flex justify-between w-full px-5">
+        {pages.map((page) => (
+          <div
+            key={page.id}
+            className="cursor-pointer"
+            onClick={() => navigate(page.href)}
+          >
+            <h3>{page.title}</h3>
+          </div>
+        ))}
+      </div>
+      <Outlet />
     </div>
   );
-}
-
-function Unauthenticated() {
-  return (
-    <div>
-      <p>Login to view cowboy photos.</p>
-    </div>
-  )
 }

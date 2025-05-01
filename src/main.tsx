@@ -10,6 +10,9 @@ import Submit from "./pages/Submit.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthRoute from "./components/AuthRoute.tsx";
 import Account from "./pages/Account.tsx";
+import Photos from "./pages/home/Photos.tsx";
+import Leaderboard from "./components/Leaderboard.tsx";
+import Rules from "./pages/home/Rules.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +23,11 @@ createRoot(document.getElementById("root")!).render(
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />}>
-              <Route path="" element={<Home />} />
+              <Route path="/" element={<Home />}>
+                <Route index element={<Photos />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/rules" element={<Rules />} />
+              </Route>
               <Route path="/login" element={<Login />} />
               <Route
                 path="/submit"

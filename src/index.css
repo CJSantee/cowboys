@@ -14,7 +14,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --background: #F8EDD2;
+  --background: #f8edd2;
 }
 
 html {
@@ -23,4 +23,9 @@ html {
 
 body {
   background-color: var(--background);
+}
+
+html,
+body {
+  overflow: hidden;
 }

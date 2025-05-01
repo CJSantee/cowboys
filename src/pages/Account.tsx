@@ -1,4 +1,4 @@
-import { useSession } from "@cjsantee/pondero-client"
+import { useSession } from "@cjsantee/pondero-client";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import { useEffect, useState } from "react";
@@ -10,33 +10,33 @@ export default function Account() {
   const { data: cowboys } = useCowboys();
 
   const [cowboy, setCowboy] = useState<{ cowboy_id: number } | null>(null);
-  const [nickname, setNickname] = useState('');
+  const [nickname, setNickname] = useState("");
   const updateCowboy = useUpdateCowboy();
 
   useEffect(() => {
-    if(!user || !cowboys?.length) {
+    if (!user || !cowboys?.length) {
       return;
     }
     const userCowboy = cowboys.find((c) => c.user_id === user.user_id) ?? null;
     setCowboy(userCowboy);
-    setNickname(userCowboy?.nickname ?? '');
+    setNickname(userCowboy?.nickname ?? "");
   }, [user, cowboys]);
 
   const onUpdate = () => {
-    if(!cowboy) {
+    if (!cowboy) {
       return;
     }
     const { cowboy_id } = cowboy;
     updateCowboy.mutate({ cowboy_id, nickname });
-  }
+  };
 
   return (
-    <div className="flex flex-col justify-between pb-6">
+    <div className="flex flex-col justify-between">
       <div className="flex flex-col gap-2">
         <Input label="Nickname" value={nickname} onChange={setNickname} />
         <Button onClick={onUpdate} title="Update Account" />
       </div>
       <Button onClick={signOut} title="Sign Out" />
     </div>
-  )
+  );
 }

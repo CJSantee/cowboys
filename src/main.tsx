@@ -11,8 +11,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthRoute from "./components/AuthRoute.tsx";
 import Account from "./pages/Account.tsx";
 import Photos from "./pages/home/Photos.tsx";
-import Leaderboard from "./components/Leaderboard.tsx";
 import Rules from "./pages/home/Rules.tsx";
+import Leaderboard from "./pages/home/Leaderboard.tsx";
 
 const queryClient = new QueryClient();
 

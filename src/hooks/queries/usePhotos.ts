@@ -11,9 +11,10 @@ export default function usePhotos() {
         photos: {
           url: string;
           cowboys: { cowboy_id: number; nickname: string }[];
+          score_date: string;
         }[];
       }>("/cowboys/photos", { access_token });
-      if(success && data) {
+      if (success && data) {
         const { photos } = data;
         return photos;
       }

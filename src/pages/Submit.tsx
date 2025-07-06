@@ -54,7 +54,7 @@ export default function Submit() {
       access_token,
     });
     if (success) {
-      console.log('data', data);
+      console.log("data", data);
     }
     setUploading(false);
   };
@@ -72,7 +72,7 @@ export default function Submit() {
       {showDatepicker ? (
         <Datepicker value={date} onChange={setDate} />
       ) : preview ? (
-        <Image url={preview} />
+        <Image url={preview} date={(date || new Date()).toISOString()} />
       ) : (
         <FileInput onChange={onFileChange} />
       )}

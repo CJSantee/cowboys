@@ -10,7 +10,7 @@ export default function usePhotos() {
       const { success, error, data } = await api.get<{
         photos: {
           url: string;
-          cowboys: { cowboy_id: number; nickname: string }[];
+          cowboys: { cowboy_id: number; nickname: string; points: number }[];
           score_date: string;
         }[];
       }>("/cowboys/photos", { access_token });

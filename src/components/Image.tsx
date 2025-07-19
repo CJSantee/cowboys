@@ -1,5 +1,5 @@
 import HatIcon from "../assets/Icon.png";
-import { getShortDate } from "../utils";
+import { parseDate } from "../utils";
 
 interface ImageProps {
   url: string;
@@ -8,6 +8,7 @@ interface ImageProps {
   cowboys?: {
     cowboy_id: number;
     nickname: string;
+    points: number;
   }[];
 }
 export default function Image({
@@ -27,16 +28,20 @@ export default function Image({
           {cowboys.map((cowboy) => (
             <div
               key={`cowboy-${cowboy.cowboy_id}`}
-              className="flex items-center"
+              className="flex items-center gap-1"
             >
               <img src={HatIcon} className="h-6 object-cover" />
               <span>{cowboy.nickname}</span>
+              <span className="text-sm text-gray-500">+{cowboy.points}</span>
+              {cowboy.points === 0 && (
+                <span className="text-xs text-gray-500">
+                  (Points already scored for this day)
+                </span>
+              )}
             </div>
           ))}
         </div>
-        <div className="flex text-xs text-gray-500 mt-2">
-          {getShortDate(date)}
-        </div>
+        <div className="flex text-xs text-gray-500 mt-2">{parseDate(date)}</div>
       </div>
       {caption && (
         <div className="text-sm text-gray-700 mt-4 font-handwriting text-center">

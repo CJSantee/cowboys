@@ -1,21 +1,24 @@
-export function getShortDate(utcDate: string) {
-  const date = new Date(utcDate);
+import { format, isThisWeek, isThisYear, isToday } from "date-fns";
 
-  const oneWeekAgo = new Date();
-  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
-  const thisWeek = date > oneWeekAgo;
-  const thisYear = date.getFullYear() === new Date().getFullYear();
-
-  let options: Intl.DateTimeFormatOptions = {};
-  if (thisWeek) {
-    options = { weekday: "long" };
-  } else if (thisYear) {
-    options = { day: "numeric", month: "short" };
+/**
+ * Parses a date string in the format "YYYY-MM-DD" and returns a formatted date string.
+ * @param dateString The date string to parse.
+ * @returns The formatted date string.
+ */
+export function parseDate(dateString: string) {
+  const [year, month, day] = dateString.split("-").map(Number);
+  const localDate = new Date(year, month - 1, day);
+  if (isToday(localDate)) {
+    return "Today";
+  } else if (isThisWeek(localDate)) {
+    return format(localDate, "EEEE");
+  } else if (isThisYear(localDate)) {
+    return format(localDate, "MMM do");
   } else {
-    options = { day: "numeric", month: "short", year: "numeric" };
+    return format(localDate, "MMM do, yyyy");
   }
+}
 
-  const string = date.toLocaleDateString("en-US", options);
-  return string;
+export function convertDate(date: Date) {
+  return format(date, "yyyy-MM-dd");
 }

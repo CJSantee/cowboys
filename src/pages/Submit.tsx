@@ -6,6 +6,9 @@ import { api, useSession } from "@cjsantee/pondero-client";
 import Datepicker from "../components/Datepicker";
 import CowboySelect from "../components/CowboySelect";
 import ProgressBar from "../components/ProgressBar";
+import { convertDate } from "../utils";
+import useCowboys from "../hooks/queries/useCowboys";
+import { useNavigate } from "react-router";
 
 export default function Submit() {
   const [date, setDate] = useState<null | Date>(new Date());
@@ -13,9 +16,10 @@ export default function Submit() {
   const [preview, setPreview] = useState<null | string>(null);
   const [showDatepicker, setShowDatepicker] = useState(false);
   const [uploading, setUploading] = useState(false);
-
-  const [selectedCowboys, setSelectedCowboys] = useState<number[]>([]);
+  const [selectedCowboyIds, setSelectedCowboyIds] = useState<number[]>([]);
   const { access_token } = useSession();
+  const { data: cowboys } = useCowboys();
+  const navigate = useNavigate();
 
   useEffect(() => {
     return () => {
@@ -43,21 +47,30 @@ export default function Submit() {
     const formData = new FormData();
     formData.append("image", file);
     // Add selected cowboys
-    formData.append("cowboys", selectedCowboys.join(","));
+    formData.append("cowboys", selectedCowboyIds.join(","));
     // Add the selected score date
     formData.append(
       "score_date",
       date?.toUTCString() || new Date().toUTCString()
     );
     setUploading(true);
-    const { success, data } = await api.upload("/cowboys/photos", formData, {
+    const { success } = await api.upload("/cowboys/photos", formData, {
       access_token,
     });
     if (success) {
-      console.log("data", data);
+      navigate("/");
     }
     setUploading(false);
   };
+
+  const selectedCowboys = selectedCowboyIds
+    .map((id) => cowboys?.find((c) => c.cowboy_id === id))
+    .filter(Boolean)
+    .map((c) => ({
+      cowboy_id: c?.cowboy_id || 0,
+      nickname: c?.nickname || "",
+      points: 1,
+    }));
 
   return (
     <div className="flex flex-col grow items-center justify-between p-3">
@@ -72,11 +85,15 @@ export default function Submit() {
       {showDatepicker ? (
         <Datepicker value={date} onChange={setDate} />
       ) : preview ? (
-        <Image url={preview} date={(date || new Date()).toISOString()} />
+        <Image
+          url={preview}
+          date={convertDate(date || new Date())}
+          cowboys={selectedCowboys}
+        />
       ) : (
         <FileInput onChange={onFileChange} />
       )}
-      <CowboySelect value={selectedCowboys} onChange={setSelectedCowboys} />
+      <CowboySelect value={selectedCowboyIds} onChange={setSelectedCowboyIds} />
       {file &&
         (uploading ? (
           <ProgressBar duration_ms={5000} />

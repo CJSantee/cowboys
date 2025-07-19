@@ -4,7 +4,6 @@ interface FileInputProps {
 export default function FileInput({ onChange }: FileInputProps) {
   return (
     <div className="flex w-full items-center justify-center">
-
       <label
         htmlFor="file-input"
         className="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-900 "
@@ -26,7 +25,8 @@ export default function FileInput({ onChange }: FileInputProps) {
             />
           </svg>
           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            <span className="font-semibold">Click to upload</span> or drag and drop
+            <span className="font-semibold">Click to upload</span> or drag and
+            drop
           </p>
         </div>
       </label>

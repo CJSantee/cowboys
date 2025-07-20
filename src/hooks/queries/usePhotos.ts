@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { photoKeys } from "./queryKeys";
 import { api, useSession } from "@cjsantee/pondero-client";
+import { CowboyId } from "../../types";
 
 export default function usePhotos() {
   const { access_token } = useSession();
@@ -10,7 +11,7 @@ export default function usePhotos() {
       const { success, error, data } = await api.get<{
         photos: {
           url: string;
-          cowboys: { cowboy_id: number; nickname: string; points: number }[];
+          cowboys: { cowboy_id: CowboyId; nickname: string; points: number }[];
           score_date: string;
         }[];
       }>("/cowboys/photos", { access_token });

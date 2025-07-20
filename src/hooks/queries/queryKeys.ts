@@ -1,6 +1,8 @@
+import { CowboyId } from "../../types";
+
 export const cowboyKeys = {
   all: ["cowboys"] as const,
-  cowboy: (cowboy_identifier: number | string) =>
+  cowboy: (cowboy_identifier: CowboyId | string) =>
     [...cowboyKeys.all, cowboy_identifier] as const,
 };
 

@@ -1,9 +1,10 @@
 import useCowboys from "../hooks/queries/useCowboys";
+import { CowboyId } from "../types";
 import Checkbox from "./Checkbox";
 
 interface CowboySelectProps {
-  value: number[];
-  onChange: (cowboy_ids: number[]) => void;
+  value: CowboyId[];
+  onChange: (cowboy_ids: CowboyId[]) => void;
 }
 export default function CowboySelect({
   value: selectedCowboys,
@@ -11,7 +12,7 @@ export default function CowboySelect({
 }: CowboySelectProps) {
   const { data: cowboys, isLoading } = useCowboys();
 
-  const toggleSelected = (cowboy_id: number) => {
+  const toggleSelected = (cowboy_id: CowboyId) => {
     if (selectedCowboys.includes(cowboy_id)) {
       const filteredCowboys = selectedCowboys.filter(
         (cId) => cId !== cowboy_id

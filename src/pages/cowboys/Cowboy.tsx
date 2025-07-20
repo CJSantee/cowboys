@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 import useCowboy from "../../hooks/queries/useCowboy";
 import { parseDate } from "../../utils";
-import Icon from "../../components/Icon";
+import HatIcon from "../../components/HatIcon";
 
 export default function Cowboy() {
   const { cowboy: cowboy_nickname } = useParams<{ cowboy: string }>();
@@ -15,7 +15,7 @@ export default function Cowboy() {
     <div className="h-full pb-6">
       <div className="mx-2 flex flex-row justify-between items-center mask-fade">
         <div className="flex items-center gap-0.5">
-          <Icon name="person" size={4} />
+          <HatIcon cowboy_id={cowboy.cowboy_id} />
           <h2 className="text-lg">{cowboy.nickname}</h2>
         </div>
         <span className="text-lg">{cowboy.points} Points</span>

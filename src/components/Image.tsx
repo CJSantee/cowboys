@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router";
-import HatIcon from "../assets/Icon.png";
 import { parseDate } from "../utils";
+import HatIcon from "./HatIcon";
+import { CowboyId } from "../types";
 
 interface ImageProps {
   url: string;
   caption?: string;
   date: string;
   cowboys?: {
-    cowboy_id: number;
+    cowboy_id: CowboyId;
     nickname: string;
     points: number;
   }[];
@@ -33,7 +34,7 @@ export default function Image({
               className="flex items-center gap-1"
               onClick={() => navigate(`/cowboys/${cowboy.nickname}`)}
             >
-              <img src={HatIcon} className="h-6 object-cover" />
+              <HatIcon cowboy_id={cowboy.cowboy_id} />
               <span>{cowboy.nickname}</span>
               <span className="text-sm text-gray-500">+{cowboy.points}</span>
               {cowboy.points === 0 && (

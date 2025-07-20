@@ -4,12 +4,13 @@ import Input from "../components/Input";
 import { useEffect, useState } from "react";
 import useUpdateCowboy from "../hooks/mutations/useUpdateCowboy";
 import useCowboys from "../hooks/queries/useCowboys";
+import { CowboyId } from "../types";
 
 export default function Account() {
   const { user, signOut } = useSession();
   const { data: cowboys } = useCowboys();
 
-  const [cowboy, setCowboy] = useState<{ cowboy_id: number } | null>(null);
+  const [cowboy, setCowboy] = useState<{ cowboy_id: CowboyId } | null>(null);
   const [nickname, setNickname] = useState("");
   const updateCowboy = useUpdateCowboy();
 

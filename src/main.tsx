@@ -13,7 +13,7 @@ import Account from "./pages/Account.tsx";
 import Photos from "./pages/home/Photos.tsx";
 import Rules from "./pages/home/Rules.tsx";
 import Leaderboard from "./pages/home/Leaderboard.tsx";
-import Cowboy from "./pages/cowboys/cowboy.tsx";
+import Cowboy from "./pages/cowboys/Cowboy.tsx";
 
 const queryClient = new QueryClient();
 

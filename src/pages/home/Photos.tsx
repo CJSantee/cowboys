@@ -3,9 +3,11 @@ import Button from "../../components/Button";
 import Photos from "../../components/Photos";
 import AuthComponent from "../../components/AuthComponent";
 import Unauthorized from "../../components/Unauthorized";
+import { useSession } from "@cjsantee/pondero-client";
 
 export default function PhotosPage() {
   const navigate = useNavigate();
+  const { user } = useSession();
 
   return (
     <>
@@ -18,9 +20,11 @@ export default function PhotosPage() {
           <Photos />
         </AuthComponent>
       </div>
-      <div className="flex justify-center mt-2 min-h-content">
-        <Button onClick={() => navigate("/submit")} title="Submit Photo" />
-      </div>
+      {user && (
+        <div className="flex justify-center mt-2 min-h-content">
+          <Button onClick={() => navigate("/submit")} title="Submit Photo" />
+        </div>
+      )}
     </>
   );
 }

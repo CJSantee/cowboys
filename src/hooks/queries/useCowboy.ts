@@ -2,10 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { cowboyKeys } from "./queryKeys";
 import { api, ServerError, useSession } from "@cjsantee/pondero-client";
 
-interface UseCowboyParams {
-  cowboy_id: number;
-}
-
 interface CowboyData {
   cowboy_id: number;
   first_name: string;
@@ -14,23 +10,29 @@ interface CowboyData {
   points: number;
   photos: {
     photo_id: number;
-    url: string;
+    photo_url: string;
+    score_date: string;
+    points: number;
   }[];
 }
 
-export default function useCowboy({ cowboy_id }:UseCowboyParams) {
+/**
+ * Custom hook to fetch a cowboy's data.
+ * @param cowboy_identifier - Either the cowboy's ID or nickname.
+ * @returns
+ */
+export default function useCowboy(cowboy_identifier: number | string) {
   const { access_token } = useSession();
-
   return useQuery({
-    queryKey: cowboyKeys.cowboy(cowboy_id),
+    queryKey: cowboyKeys.cowboy(cowboy_identifier),
     queryFn: async () => {
       const { success, error, data } = await api.get<{ cowboy: CowboyData }>(
-        `/cowboys/${cowboy_id}`,
+        `/cowboys/${cowboy_identifier}`,
         {
           access_token,
         }
       );
-      if(success) {
+      if (success) {
         return data.cowboy;
       }
       throw new ServerError(error);

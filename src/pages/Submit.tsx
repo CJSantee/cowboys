@@ -9,6 +9,7 @@ import ProgressBar from "../components/ProgressBar";
 import { convertDate } from "../utils";
 import useCowboys from "../hooks/queries/useCowboys";
 import { useNavigate } from "react-router";
+import { CowboyId } from "../types";
 
 export default function Submit() {
   const [date, setDate] = useState<null | Date>(new Date());
@@ -16,7 +17,7 @@ export default function Submit() {
   const [preview, setPreview] = useState<null | string>(null);
   const [showDatepicker, setShowDatepicker] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [selectedCowboyIds, setSelectedCowboyIds] = useState<number[]>([]);
+  const [selectedCowboyIds, setSelectedCowboyIds] = useState<CowboyId[]>([]);
   const { access_token } = useSession();
   const { data: cowboys } = useCowboys();
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ export default function Submit() {
     .map((id) => cowboys?.find((c) => c.cowboy_id === id))
     .filter(Boolean)
     .map((c) => ({
-      cowboy_id: c?.cowboy_id || 0,
+      cowboy_id: c?.cowboy_id || (0 as CowboyId),
       nickname: c?.nickname || "",
       points: 1,
     }));

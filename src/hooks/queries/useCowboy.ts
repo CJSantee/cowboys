@@ -22,7 +22,7 @@ interface CowboyData {
  * @param cowboy_identifier - Either the cowboy's ID or nickname.
  * @returns
  */
-export default function useCowboy(cowboy_identifier: number | string) {
+export default function useCowboy(cowboy_identifier: CowboyId | string) {
   const { access_token } = useSession();
   return useQuery({
     queryKey: cowboyKeys.cowboy(cowboy_identifier),

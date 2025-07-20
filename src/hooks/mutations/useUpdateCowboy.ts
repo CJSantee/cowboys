@@ -1,8 +1,9 @@
 import { api, ServerError, useSession } from "@cjsantee/pondero-client";
 import { useMutation } from "@tanstack/react-query";
+import { CowboyId } from "../../types";
 
 interface UpdateCowboyVariables {
-  cowboy_id: number;
+  cowboy_id: CowboyId;
   nickname: string;
 }
 export default function useUpdateCowboy() {

@@ -9,6 +9,7 @@ Follow the style guide [Common Changelog](https://common-changelog.org), adapted
 ### Added
 
 - Add cowboy profile pages. ([pr-18](https://github.com/CJSantee/cowboys/pull/18))
+- Add custom cowboy hat icons. ([pr-19](https://github.com/CJSantee/cowboys/pull/19))
 
 ## [1.1.0] - 2025-07-19
 

@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { cowboyKeys } from "./queryKeys";
 import { api, ServerError, useSession } from "@cjsantee/pondero-client";
+import { CowboyId } from "../../types";
 
 interface CowboyData {
-  cowboy_id: number;
+  cowboy_id: CowboyId;
   first_name: string;
   last_name: string;
   nickname: string;

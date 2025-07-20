@@ -4,11 +4,13 @@ Follow the style guide [Common Changelog](https://common-changelog.org), adapted
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-07-19
+
 ### Added
 
 - Add cowboy profile pages. ([pr-18](https://github.com/CJSantee/cowboys/pull/18))
 
-## [1.0.1] - 2025-07-19
+## [1.1.0] - 2025-07-19
 
 ### Added
 

@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { leaderboard } from "./queryKeys";
-import { api, ServerError, useSession } from "@cjsantee/pondero-client";
-import { CowboyId } from "../../types";
+import { useQuery } from '@tanstack/react-query';
+import { leaderboard } from './queryKeys';
+import { api, ServerError, useSession } from '@cjsantee/pondero-client';
+import { CowboyId } from '../../types';
 
 export default function useLeaderboard() {
   const { access_token } = useSession();
@@ -15,7 +15,7 @@ export default function useLeaderboard() {
           nickname: string;
           points: number;
         }[];
-      }>("/cowboys/leaderboard", {
+      }>('/public/cowboys/leaderboard', {
         access_token,
       });
       if (success) {

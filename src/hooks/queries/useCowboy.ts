@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { cowboyKeys } from "./queryKeys";
-import { api, ServerError, useSession } from "@cjsantee/pondero-client";
-import { CowboyId } from "../../types";
+import { useQuery } from '@tanstack/react-query';
+import { cowboyKeys } from './queryKeys';
+import { api, ServerError, useSession } from '@cjsantee/pondero-client';
+import { CowboyId } from '../../types';
 
 interface CowboyData {
   cowboy_id: CowboyId;
@@ -20,7 +20,6 @@ interface CowboyData {
 /**
  * Custom hook to fetch a cowboy's data.
  * @param cowboy_identifier - Either the cowboy's ID or nickname.
- * @returns
  */
 export default function useCowboy(cowboy_identifier: CowboyId | string) {
   const { access_token } = useSession();

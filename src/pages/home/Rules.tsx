@@ -135,17 +135,21 @@ Thereof">
         </Article>
         <Article number="V" title="Enforcement of Competitive Integrity">
           <Section number="5.1" title="Spirit of the Competition Clause">
-            Should four of the five cowboys unanimously declare “
-            <span className="font-bold">Shame</span>” upon the fifth cowboy for actions deemed to
-            violate the spirit of the competition, the accused shall suffer a penalty of{' '}
-            <span className="font-bold">–3 points</span>.
+            <Paragraph>
+              Should four of the five cowboys unanimously declare “
+              <span className="font-bold">Shame</span>” upon the fifth cowboy for actions deemed to
+              violate the spirit of the competition, the accused shall suffer a penalty of{' '}
+              <span className="font-bold">–3 points</span>.
+            </Paragraph>
           </Section>
         </Article>
         <Article number="VI" title="Definitions">
           <Section number="6.1" title="Public Place">
-            For the purposes of this Charter, a public place is defined as any location accessible
-            to the general public and not affiliated with the cowboy’s personal residence or place
-            of employment.
+            <Paragraph>
+              For the purposes of this Charter, a public place is defined as any location accessible
+              to the general public and not affiliated with the cowboy’s personal residence or place
+              of employment.
+            </Paragraph>
           </Section>
           <Section number="6.2" title="Mounted Upon a Horse">
             <Paragraph>

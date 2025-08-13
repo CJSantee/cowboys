@@ -43,6 +43,7 @@ export default function Rules() {
             <Paragraph>
               Points may only be earned through photographs that meet the following criteria:
               <ol className="list-disc pl-5">
+                <li>The photograph must clearly show the cowboy wearing their cowboy hat.</li>
                 <li>
                   The photograph must be submitted either directly to the designated group chat or
                   uploaded via cowboycounter.com.

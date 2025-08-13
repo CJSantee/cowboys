@@ -243,7 +243,7 @@ Thereof">
           <Section number="A1.3" title="Clarification of Bonus Status">
             <Paragraph>
               Each qualifying photo under this Amendment shall earn{' '}
-              <span className="font-bold">3 points</span>, superseding the standard 1-point value
+              <span className="font-bold">5 points</span>, superseding the standard 1-point value
               described in Article III, Section 3.1. Only one activity-based bonus may be applied
               per photo.
             </Paragraph>

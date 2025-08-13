@@ -170,7 +170,7 @@ Thereof">
         <Article number="I" title="“Live Like You Were Dying” Bonus Activities" ammendment>
           <Section number="A1.1" title="Eligible Activities and Scoring">
             <Paragraph>
-              A cowboy shall earn <span className="font-bold">3 points</span> for submitting a
+              A cowboy shall earn <span className="font-bold">5 points</span> for submitting a
               qualifying photograph taken while participating in any of the following activities,
               inspired by the Tim McGraw song{' '}
               <span className="italic">Live Like You Were Dying</span>, provided the cowboy is

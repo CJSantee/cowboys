@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import Button from "../components/Button";
-import FileInput from "../components/FileInput";
-import Image from "../components/Image";
-import { api, useSession } from "@cjsantee/pondero-client";
-import Datepicker from "../components/Datepicker";
-import CowboySelect from "../components/CowboySelect";
-import ProgressBar from "../components/ProgressBar";
-import { convertDate } from "../utils";
-import useCowboys from "../hooks/queries/useCowboys";
-import { useNavigate } from "react-router";
-import { CowboyId } from "../types";
+import { useEffect, useState } from 'react';
+import Button from '../components/Button';
+import FileInput from '../components/FileInput';
+import Image from '../components/Image';
+import { api, useSession } from '@cjsantee/pondero-client';
+import Datepicker from '../components/Datepicker';
+import CowboySelect from '../components/CowboySelect';
+import ProgressBar from '../components/ProgressBar';
+import { convertDate } from '../utils';
+import useCowboys from '../hooks/queries/useCowboys';
+import { useNavigate } from 'react-router';
+import { CowboyId } from '../types';
 
 export default function Submit() {
   const [date, setDate] = useState<null | Date>(new Date());
@@ -46,20 +46,17 @@ export default function Submit() {
     }
 
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append('image', file);
     // Add selected cowboys
-    formData.append("cowboys", selectedCowboyIds.join(","));
+    formData.append('cowboys', selectedCowboyIds.join(','));
     // Add the selected score date
-    formData.append(
-      "score_date",
-      date?.toUTCString() || new Date().toUTCString()
-    );
+    formData.append('score_date', convertDate(date || new Date()));
     setUploading(true);
-    const { success } = await api.upload("/cowboys/photos", formData, {
+    const { success } = await api.upload('/cowboys/photos', formData, {
       access_token,
     });
     if (success) {
-      navigate("/");
+      navigate('/');
     }
     setUploading(false);
   };
@@ -69,7 +66,7 @@ export default function Submit() {
     .filter(Boolean)
     .map((c) => ({
       cowboy_id: c?.cowboy_id || (0 as CowboyId),
-      nickname: c?.nickname || "",
+      nickname: c?.nickname || '',
       points: 1,
     }));
 
@@ -79,18 +76,14 @@ export default function Submit() {
         <h1>{date?.toDateString()}</h1>
         <Button
           onClick={() => setShowDatepicker(!showDatepicker)}
-          title={showDatepicker ? "Confirm Date" : "Change Date"}
+          title={showDatepicker ? 'Confirm Date' : 'Change Date'}
           size="sm"
         />
       </div>
       {showDatepicker ? (
         <Datepicker value={date} onChange={setDate} />
       ) : preview ? (
-        <Image
-          url={preview}
-          date={convertDate(date || new Date())}
-          cowboys={selectedCowboys}
-        />
+        <Image url={preview} date={convertDate(date || new Date())} cowboys={selectedCowboys} />
       ) : (
         <FileInput onChange={onFileChange} />
       )}

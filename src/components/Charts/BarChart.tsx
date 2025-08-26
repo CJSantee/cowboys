@@ -1,16 +1,16 @@
-import { ApexOptions } from "apexcharts";
-import ApexChart from "react-apexcharts";
+import { ApexOptions } from 'apexcharts';
+import ApexChart from 'react-apexcharts';
 
 interface BarChartProps {
-  series: {name: string; data: number[]}[],
-  categories: string[],
+  series: { name: string; data: number[] }[];
+  categories: string[];
 }
 export default function BarChart({ series, categories }: BarChartProps) {
   const options: ApexOptions = {
     chart: {
-      type: "bar",
+      type: 'bar',
       stacked: true,
-      fontFamily: "Inter, sans-serif",
+      fontFamily: 'Inter, sans-serif',
       dropShadow: {
         enabled: false,
       },
@@ -24,7 +24,7 @@ export default function BarChart({ series, categories }: BarChartProps) {
       },
     },
     tooltip: {
-      cssClass: "text-black",
+      cssClass: 'text-black',
       fillSeriesColor: true,
     },
     grid: {
@@ -38,13 +38,5 @@ export default function BarChart({ series, categories }: BarChartProps) {
     },
   };
 
-  return (
-    <ApexChart
-      options={options}
-      series={series}
-      type="bar"
-      width="100%"
-      height={300}
-    />
-  );
+  return <ApexChart options={options} series={series} type="bar" width="100%" height={300} />;
 }

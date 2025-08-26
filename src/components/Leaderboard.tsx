@@ -1,22 +1,22 @@
-import { Spinner } from "flowbite-react";
-import useLeaderboard from "../hooks/queries/useLeaderboard";
-import BarChart from "./Charts/BarChart";
+import { Spinner } from 'flowbite-react';
+import useLeaderboard from '../hooks/queries/useLeaderboard';
+import BarChart from './Charts/BarChart';
 
 export default function Leaderboard() {
-  const { data: leaderboard } = useLeaderboard();
+  const { data } = useLeaderboard();
 
-  if (!leaderboard?.length) {
+  if (!data?.leaderboard?.length) {
     return <Spinner />;
   }
 
   return (
-    <div className="flex grow w-full px-3">
+    <div className="">
       <BarChart
-        categories={leaderboard.map((l) => l.nickname)}
+        categories={data.leaderboard.map((l) => l.nickname)}
         series={[
           {
-            name: "Cowboys",
-            data: leaderboard.map((l) => l.points),
+            name: 'Cowboys',
+            data: data.leaderboard.map((l) => l.points),
           },
         ]}
       />

@@ -3,7 +3,7 @@ import { cowboyKeys } from './queryKeys';
 import { api, ServerError, useSession } from '@cjsantee/pondero-client';
 import { CowboyId } from '../../types';
 
-interface CowboyData {
+export interface CowboyData {
   cowboy_id: CowboyId;
   first_name: string;
   last_name: string;

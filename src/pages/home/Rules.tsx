@@ -27,8 +27,10 @@ export default function Rules() {
             <Paragraph>
               The competition shall commence on{' '}
               <span className="font-bold">
-                January 12, 2025, at 6:06 PM Central Time (Nashville, TN time zone).
-              </span>
+                January 12, 2025, at 6:06 PM Central Time (Nashville, TN time zone)
+              </span>{' '}
+              and shall conclude exactly one year later, on{' '}
+              <span className="font-bold">January 12, 2026, at 6:06 PM Central Time</span>.
             </Paragraph>
           </Section>
           <Section number="1.2" title="Final Determination of Outcome">

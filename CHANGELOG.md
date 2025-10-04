@@ -4,6 +4,11 @@ Follow the style guide [Common Changelog](https://common-changelog.org), adapted
 
 ## [Unreleased]
 
+### Added
+
+- Added points badges for photos earning extra points. 
+- Added countdown timer to January 12, 2026.
+
 ## [1.2.0] - 2025-07-19
 
 ### Added

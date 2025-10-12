@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { photoKeys } from "./queryKeys";
-import { api, useSession } from "@cjsantee/pondero-client";
-import { CowboyId } from "../../types";
+import { useQuery } from '@tanstack/react-query';
+import { photoKeys } from './queryKeys';
+import { api, useSession } from '@cjsantee/pondero-client';
+import { CowboyId } from '../../types';
 
 export default function usePhotos() {
   const { access_token } = useSession();
@@ -12,9 +12,10 @@ export default function usePhotos() {
         photos: {
           url: string;
           cowboys: { cowboy_id: CowboyId; nickname: string; points: number }[];
+          alt_photos: { url: string; metadata: { env?: string; quality: number } }[];
           score_date: string;
         }[];
-      }>("/cowboys/photos", { access_token });
+      }>('/cowboys/photos', { access_token });
       if (success && data) {
         const { photos } = data;
         return photos;

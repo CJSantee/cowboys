@@ -1,8 +1,8 @@
-import { Spinner } from "flowbite-react";
-import usePhotos from "../hooks/queries/usePhotos";
-import { useState, useEffect, useCallback } from "react";
-import Image from "./Image";
-import { useSwipeable } from "react-swipeable";
+import { Spinner } from 'flowbite-react';
+import usePhotos from '../hooks/queries/usePhotos';
+import { useState, useEffect, useCallback } from 'react';
+import Image from './Image';
+import { useSwipeable } from 'react-swipeable';
 
 export default function Photos() {
   const { data: photos, isLoading } = usePhotos();
@@ -32,15 +32,15 @@ export default function Photos() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
+      if (e.key === 'ArrowLeft') {
         previousPhoto();
-      } else if (e.key === "ArrowRight") {
+      } else if (e.key === 'ArrowRight') {
         nextPhoto();
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [photoIndex, nextPhoto, previousPhoto]);
 
@@ -52,6 +52,7 @@ export default function Photos() {
     <div {...handlers} className="h-full px-5">
       <Image
         url={photos[photoIndex].url}
+        alt={photos[photoIndex].alt_photos?.[0]}
         cowboys={photos[photoIndex].cowboys}
         date={photos[photoIndex].score_date}
       />

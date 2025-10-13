@@ -4,7 +4,7 @@ import { api, useSession, ServerError } from '@cjsantee/pondero-client';
 import { CowboyId } from '../../types';
 
 export default function usePhotos() {
-  const { access_token } = useSession();
+  const { access_token, loading } = useSession();
   return useQuery({
     queryKey: photoKeys.all,
     queryFn: async () => {
@@ -22,5 +22,6 @@ export default function usePhotos() {
       }
       throw new ServerError(error);
     },
+    enabled: !loading,
   });
 }

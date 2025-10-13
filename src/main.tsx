@@ -21,7 +21,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <SessionProvider>
+      <SessionProvider onRefresh={() => queryClient.invalidateQueries()}>
         <Toaster />
         <BrowserRouter>
           <Routes>

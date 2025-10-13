@@ -73,10 +73,11 @@ function CowboyPhoto({
         </div>
       )}
       <img
-        src={photo.photo_url}
+        src={photo.alt_photos?.[0]?.url || photo.photo_url}
         alt={`photo-${photo.photo_id}`}
         className="w-full h-full object-contain object-top cursor-pointer"
         onClick={() => setModalOpen(true)}
+        loading="lazy"
       />
       {modalOpen && (
         <div

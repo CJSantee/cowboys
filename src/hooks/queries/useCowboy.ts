@@ -14,6 +14,11 @@ export interface CowboyData {
     photo_url: string;
     score_date: string;
     points: number;
+    alt_photos: {
+      alt_photo_id: number;
+      url: string;
+      metadata: { env?: string; quality: number };
+    }[];
   }[];
 }
 
@@ -27,7 +32,7 @@ export default function useCowboy(cowboy_identifier: CowboyId | string) {
     queryKey: cowboyKeys.cowboy(cowboy_identifier),
     queryFn: async () => {
       const { success, error, data } = await api.get<{ cowboy: CowboyData }>(
-        `/cowboys/${cowboy_identifier}`,
+        `/public/cowboys/${cowboy_identifier}`,
         {
           access_token,
         }

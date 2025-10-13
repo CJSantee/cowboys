@@ -1,9 +1,9 @@
-import Colin from "../assets/hats/Colin.png";
-import Thomas from "../assets/hats/Thomas.png";
-import Joe from "../assets/hats/Joe.png";
-import Griffin from "../assets/hats/Griffin.png";
-import Ethan from "../assets/hats/Ethan.png";
-import { CowboyId } from "../types";
+import Colin from '../assets/hats/small/Colin.png';
+import Thomas from '../assets/hats/small/Thomas.png';
+import Joe from '../assets/hats/small/Joe.png';
+import Griffin from '../assets/hats/small/Griffin.png';
+import Ethan from '../assets/hats/small/Ethan.png';
+import { CowboyId } from '../types';
 
 export default function HatIcon({ cowboy_id }: { cowboy_id: CowboyId }) {
   const cowboyHatMap = {
@@ -13,11 +13,5 @@ export default function HatIcon({ cowboy_id }: { cowboy_id: CowboyId }) {
     4: Griffin,
     5: Ethan,
   };
-  return (
-    <img
-      src={cowboyHatMap[cowboy_id]}
-      alt="Hat Icon"
-      className="h-6 object-cover"
-    />
-  );
+  return <img src={cowboyHatMap[cowboy_id]} alt="Hat Icon" className="h-6 object-cover" />;
 }

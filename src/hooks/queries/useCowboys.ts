@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { cowboyKeys } from "./queryKeys";
-import { api, ServerError, useSession } from "@cjsantee/pondero-client";
-import { CowboyId } from "../../types";
+import { useQuery } from '@tanstack/react-query';
+import { cowboyKeys } from './queryKeys';
+import { api, ServerError, useSession } from '@cjsantee/pondero-client';
+import { CowboyId } from '../../types';
 
 export default function useCowboys() {
   const { access_token } = useSession();
@@ -15,8 +15,9 @@ export default function useCowboys() {
           first_name: string;
           last_name: string;
           nickname: string;
+          is_public: boolean;
         }[];
-      }>("/cowboys", { access_token });
+      }>('/cowboys', { access_token });
       if (success) {
         const { cowboys } = data;
         return cowboys;

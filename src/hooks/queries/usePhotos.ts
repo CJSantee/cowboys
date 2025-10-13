@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { photoKeys } from './queryKeys';
-import { api, useSession } from '@cjsantee/pondero-client';
+import { api, useSession, ServerError } from '@cjsantee/pondero-client';
 import { CowboyId } from '../../types';
 
 export default function usePhotos() {
@@ -15,13 +15,12 @@ export default function usePhotos() {
           alt_photos: { url: string; metadata: { env?: string; quality: number } }[];
           score_date: string;
         }[];
-      }>('/cowboys/photos', { access_token });
+      }>('/public/cowboys/photos', { access_token });
       if (success && data) {
         const { photos } = data;
         return photos;
       }
-      // TODO: Replace with ServerError when exported by pondero-client
-      throw new Error(error.message);
+      throw new ServerError(error);
     },
   });
 }

@@ -1,26 +1,28 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
-import Home from "./pages/Home.tsx";
-import { SessionProvider } from "@cjsantee/pondero-client";
-import Login from "./pages/Login.tsx";
-import Submit from "./pages/Submit.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AuthRoute from "./components/AuthRoute.tsx";
-import Account from "./pages/Account.tsx";
-import Photos from "./pages/home/Photos.tsx";
-import Rules from "./pages/home/Rules.tsx";
-import Leaderboard from "./pages/home/Leaderboard.tsx";
-import Cowboy from "./pages/cowboys/Cowboy.tsx";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.tsx';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router';
+import Home from './pages/Home.tsx';
+import { SessionProvider } from '@cjsantee/pondero-client';
+import Login from './pages/Login.tsx';
+import Submit from './pages/Submit.tsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AuthRoute from './components/AuthRoute.tsx';
+import Account from './pages/Account.tsx';
+import Photos from './pages/home/Photos.tsx';
+import Rules from './pages/home/Rules.tsx';
+import Leaderboard from './pages/home/Leaderboard.tsx';
+import Cowboy from './pages/cowboys/Cowboy.tsx';
+import { Toaster } from 'sonner';
 
 const queryClient = new QueryClient();
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <SessionProvider>
+        <Toaster />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />}>

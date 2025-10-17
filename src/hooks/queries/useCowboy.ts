@@ -42,5 +42,6 @@ export default function useCowboy(cowboy_identifier: CowboyId | string) {
       }
       throw new ServerError(error);
     },
+    retry: false,
   });
 }

@@ -1,6 +1,5 @@
 import { useSession } from '@cjsantee/pondero-client';
 import Button from '../components/Button';
-import Input from '../components/Input';
 import { useEffect, useState } from 'react';
 import useUpdateCowboy from '../hooks/mutations/useUpdateCowboy';
 import useCowboys from '../hooks/queries/useCowboys';
@@ -13,7 +12,6 @@ export default function Account() {
   const { data: cowboys } = useCowboys();
 
   const [cowboy, setCowboy] = useState<{ cowboy_id: CowboyId } | null>(null);
-  const [nickname, setNickname] = useState('');
   const [isPublic, setIsPublic] = useState(false);
   const updateCowboy = useUpdateCowboy();
 
@@ -23,17 +21,17 @@ export default function Account() {
     }
     const userCowboy = cowboys.find((c) => c.user_id === user.user_id) ?? null;
     setCowboy(userCowboy);
-    setNickname(userCowboy?.nickname ?? '');
     setIsPublic(!!userCowboy?.is_public);
   }, [user, cowboys]);
 
-  const onUpdate = () => {
+  const setPublic = async (value: boolean) => {
     if (!cowboy) {
       return;
     }
+    setIsPublic(value);
     const { cowboy_id } = cowboy;
     updateCowboy.mutate(
-      { cowboy_id, nickname, is_public: isPublic },
+      { cowboy_id, is_public: value },
       {
         onSuccess: () => {
           toast.success('Account updated successfully');
@@ -43,16 +41,14 @@ export default function Account() {
   };
 
   return (
-    <div className="flex flex-col justify-between">
-      <div className="flex flex-col gap-5">
-        <Input label="Nickname" value={nickname} onChange={setNickname} />
-        <div className="flex justify-between items-center">
-          <span>Public Profile</span>
-          <Switch checked={isPublic} onChange={setIsPublic} />
-        </div>
-        <Button onClick={onUpdate} title="Update Account" />
+    <div className="flex flex-col justify-between p-5 w-full">
+      <div className="flex justify-between items-center w-full">
+        <span className="text-lg">Public Profile</span>
+        <Switch checked={isPublic} onChange={setPublic} />
       </div>
-      <Button onClick={signOut} title="Sign Out" />
+      <div className="flex justify-center mt-5">
+        <Button onClick={signOut} title="Sign Out" />
+      </div>
     </div>
   );
 }

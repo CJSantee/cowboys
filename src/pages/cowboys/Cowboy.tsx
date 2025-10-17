@@ -12,7 +12,12 @@ export default function Cowboy() {
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (!cowboy) return <div>Cowboy not found</div>;
+  if (!cowboy)
+    return (
+      <div className="flex grow justify-center items-center">
+        Sorry, only cowboys can view this page
+      </div>
+    );
 
   return (
     <div className="h-full pb-6">

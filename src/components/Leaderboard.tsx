@@ -1,12 +1,12 @@
-import { Spinner } from 'flowbite-react';
 import useLeaderboard from '../hooks/queries/useLeaderboard';
 import BarChart from './Charts/BarChart';
+import Loading from './Loading';
 
 export default function Leaderboard() {
   const { data } = useLeaderboard();
 
   if (!data?.leaderboard?.length) {
-    return <Spinner />;
+    return <Loading />;
   }
 
   return (

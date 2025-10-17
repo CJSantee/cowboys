@@ -1,6 +1,6 @@
-import { Spinner } from 'flowbite-react';
 import useLeaderboard from '../hooks/queries/useLeaderboard';
 import SteplineChart from './Charts/SteplineChart';
+import Loading from './Loading';
 
 export default function Timeline() {
   const { data } = useLeaderboard();
@@ -13,7 +13,7 @@ export default function Timeline() {
   });
 
   if (!data?.timeline?.length) {
-    return <Spinner />;
+    return <Loading />;
   }
 
   return (

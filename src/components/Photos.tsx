@@ -1,8 +1,8 @@
-import { Spinner } from 'flowbite-react';
 import usePhotos from '../hooks/queries/usePhotos';
 import { useState, useEffect, useCallback } from 'react';
 import Image from './Image';
 import { useSwipeable } from 'react-swipeable';
+import Loading from './Loading';
 
 export default function Photos() {
   const { data: photos, isLoading } = usePhotos();
@@ -45,7 +45,7 @@ export default function Photos() {
   }, [photoIndex, nextPhoto, previousPhoto]);
 
   if (!photos?.length || isLoading) {
-    return <Spinner />;
+    return <Loading />;
   }
 
   return (

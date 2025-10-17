@@ -4,16 +4,15 @@ import { CowboyId } from '../../types';
 
 interface UpdateCowboyVariables {
   cowboy_id: CowboyId;
-  nickname: string;
   is_public: boolean;
 }
 export default function useUpdateCowboy() {
   const { access_token } = useSession();
   return useMutation({
-    mutationFn: async ({ cowboy_id, nickname, is_public }: UpdateCowboyVariables) => {
+    mutationFn: async ({ cowboy_id, is_public }: UpdateCowboyVariables) => {
       const { success, error } = await api.patch(
         `/cowboys/${cowboy_id}`,
-        { nickname, is_public },
+        { is_public },
         { access_token }
       );
       if (success) {

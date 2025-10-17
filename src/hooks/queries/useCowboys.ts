@@ -3,21 +3,26 @@ import { cowboyKeys } from './queryKeys';
 import { api, ServerError, useSession } from '@cjsantee/pondero-client';
 import { CowboyId } from '../../types';
 
+export interface Cowboy {
+  cowboy_id: CowboyId;
+  user_id: number;
+  first_name: string;
+  last_name: string;
+  nickname: string;
+  photo_url: string | null;
+  is_public: boolean;
+  num_photos: number;
+  points: number;
+}
+
 export default function useCowboys() {
   const { access_token } = useSession();
   return useQuery({
     queryKey: cowboyKeys.all,
     queryFn: async () => {
       const { success, error, data } = await api.get<{
-        cowboys: {
-          cowboy_id: CowboyId;
-          user_id: number;
-          first_name: string;
-          last_name: string;
-          nickname: string;
-          is_public: boolean;
-        }[];
-      }>('/cowboys', { access_token });
+        cowboys: Cowboy[];
+      }>('/public/cowboys', { access_token });
       if (success) {
         const { cowboys } = data;
         return cowboys;

@@ -83,7 +83,12 @@ export default function Submit() {
       {showDatepicker ? (
         <Datepicker value={date} onChange={setDate} />
       ) : preview ? (
-        <Image url={preview} date={convertDate(date || new Date())} cowboys={selectedCowboys} />
+        <Image
+          url={preview}
+          date={convertDate(date || new Date())}
+          cowboys={selectedCowboys}
+          is_public={false}
+        />
       ) : (
         <FileInput onChange={onFileChange} />
       )}

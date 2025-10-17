@@ -19,8 +19,6 @@ export default function Image({ url, date, cowboys = [], is_public }: ImageProps
   const { user } = useSession();
 
   const isCowboy = aclHasPermission(user?.acl ?? 'invalid', 'cowboy');
-  console.log('isCowboy', isCowboy);
-  console.log('is_public', is_public);
 
   return (
     <div className="bg-white border border-gray-300 rounded-sm p-4 w-fit flex flex-col items-start justify-start max-w-full h-fit">

@@ -12,8 +12,8 @@ export default function usePhotos() {
         photos: {
           url: string;
           cowboys: { cowboy_id: CowboyId; nickname: string; points: number }[];
-          alt_photos: { url: string; metadata: { env?: string; quality: number } }[];
           score_date: string;
+          is_public: boolean;
         }[];
       }>('/public/cowboys/photos', { access_token });
       if (success && data) {

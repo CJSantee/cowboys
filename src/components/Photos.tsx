@@ -52,9 +52,9 @@ export default function Photos() {
     <div {...handlers} className="h-full px-5">
       <Image
         url={photos[photoIndex].url}
-        alt={photos[photoIndex].alt_photos?.[0]}
         cowboys={photos[photoIndex].cowboys}
         date={photos[photoIndex].score_date}
+        is_public={photos[photoIndex].is_public}
       />
       <div className="flex justify-center items-center text-sm mt-2">
         <p>Swipe to view more photos</p>

@@ -12,6 +12,9 @@ export default function SteplineChart({ series, categories }: SteplineChartProps
       toolbar: {
         show: false,
       },
+      zoom: {
+        enabled: false,
+      },
     },
     stroke: {
       curve: 'stepline',

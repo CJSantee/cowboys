@@ -12,10 +12,8 @@ export default function AmmendmentThree() {
     <Article number="III" title="Private Gatherings" ammendment>
       <Section number="A3.1" title="Allowance for private gatherings">
         <Paragraph>
-          Qualifying cowboy photos may be taken at private gatherings, provided that{' '}
-          <span className="font-bold">at least one (1)</span> person present{' '}
-          <span className="font-bold">does not</span> know about the cowboy competition prior to the
-          event.
+          Qualifying cowboy photos may be taken at private gatherings, provided that the gathering
+          would be considered closer to a party than a hang.
         </Paragraph>
       </Section>
       <Section number="A3.2" title="Definition of a private gathering">
@@ -23,15 +21,15 @@ export default function AmmendmentThree() {
           A <span className="font-bold">private gathering</span> refers to any event or occasion
           where the general public is not invited or permitted to attend.
         </Paragraph>
-        {isCowboy ? (
+        <Paragraph>
+          A <span className="font-bold">party</span> is defined as any event at which playing board
+          games would <span className="font-bold">decrease</span> and not increase the current vibes
+          of the gathering.
+        </Paragraph>
+        {isCowboy && (
           <Paragraph>
-            Following the standard definition of an orgy, a private gathering must involve{' '}
-            <span className="font-bold">at least five (5)</span> participants.
-          </Paragraph>
-        ) : (
-          <Paragraph>
-            A private gathering must include at <span className="font-bold">least five (5)</span>{' '}
-            participants.
+            The distinction of vibes at such an event shall follow the “I know it when I see it”
+            precedent set forth by the United States Supreme Court in Jacobellis v. Ohio.
           </Paragraph>
         )}
       </Section>

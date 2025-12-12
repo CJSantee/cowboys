@@ -84,7 +84,7 @@ export default function Submit() {
         <Datepicker value={date} onChange={setDate} />
       ) : preview ? (
         <Image
-          url={preview}
+          photo_url={preview}
           date={convertDate(date || new Date())}
           cowboys={selectedCowboys}
           is_public={false}

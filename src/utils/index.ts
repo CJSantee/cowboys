@@ -1,4 +1,5 @@
-import { format, isThisWeek, isThisYear, isToday } from 'date-fns';
+import { format, isBefore, isThisWeek, isThisYear, isToday } from 'date-fns';
+import { COMPETITION_END_DATE } from './constants';
 
 /**
  * Parses a date string in the format "YYYY-MM-DD" and returns a formatted date string.
@@ -21,4 +22,8 @@ export function parseDate(dateString: string) {
 
 export function convertDate(date: Date) {
   return format(date, 'yyyy-MM-dd');
+}
+
+export function isCompetitionOver() {
+  return isBefore(COMPETITION_END_DATE, new Date());
 }

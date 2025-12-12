@@ -5,7 +5,7 @@ import { CowboyId } from '../types';
 import { aclHasPermission, useSession } from '@cjsantee/pondero-client';
 
 interface ImageProps {
-  url: string;
+  photo_url: string;
   date: string;
   cowboys?: {
     cowboy_id: CowboyId;
@@ -14,7 +14,7 @@ interface ImageProps {
   }[];
   is_public: boolean;
 }
-export default function Image({ url, date, cowboys = [], is_public }: ImageProps) {
+export default function Image({ photo_url, date, cowboys = [], is_public }: ImageProps) {
   const navigate = useNavigate();
   const { user } = useSession();
 
@@ -23,7 +23,7 @@ export default function Image({ url, date, cowboys = [], is_public }: ImageProps
   return (
     <div className="bg-white border border-gray-300 rounded-sm p-4 w-fit flex flex-col items-start justify-start max-w-full h-fit">
       <img
-        src={url}
+        src={photo_url}
         className="block object-scale-down object-top max-w-full max-h-[500px] w-full"
       />
       <div className="w-full flex items-start justify-between">

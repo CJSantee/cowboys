@@ -10,7 +10,8 @@ export default function usePhotos() {
     queryFn: async () => {
       const { success, error, data } = await api.get<{
         photos: {
-          url: string;
+          photo_id: number;
+          photo_url: string;
           cowboys: { cowboy_id: CowboyId; nickname: string; points: number }[];
           score_date: string;
           is_public: boolean;

@@ -7,6 +7,7 @@ import Griffin from '../../assets/hats/Griffin.png';
 import Ethan from '../../assets/hats/Ethan.png';
 import { CowboyId } from '../../types';
 import { useNavigate } from 'react-router';
+import clsx from 'clsx';
 
 export default function Cowboys() {
   const { data: cowboys } = useCowboys();
@@ -35,8 +36,14 @@ function Cowboy({ cowboy }: { cowboy: CowboyType }) {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white pt-3 px-3" onClick={() => navigate(`/cowboys/${cowboy.nickname}`)}>
-      <div className="aspect-square w-full flex items-center justify-center bg-gray-100">
+    <div
+      className="bg-white pt-3 px-3 max-w-64 box-border rounded border border-gray-300"
+      onClick={() => navigate(`/cowboys/${cowboy.nickname}`)}>
+      <div
+        className={clsx(
+          'aspect-square w-full flex items-center justify-center bg-gray-100',
+          cowboy.photo_url ? '' : 'box-border rounded border border-gray-300'
+        )}>
         {cowboy.photo_url ? (
           <img
             className="h-full w-full object-cover"

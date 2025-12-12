@@ -9,6 +9,7 @@ export interface CowboyData {
   last_name: string;
   nickname: string;
   points: number;
+  is_public: boolean;
   photos: {
     photo_id: number;
     photo_url: string;

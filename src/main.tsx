@@ -16,6 +16,7 @@ import Leaderboard from './pages/home/Leaderboard.tsx';
 import Cowboy from './pages/cowboys/Cowboy.tsx';
 import { Toaster } from 'sonner';
 import Cowboys from './pages/cowboys/Cowboys.tsx';
+import Wrapped from './pages/wrapped/index.tsx';
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')!).render(
                 </Route>
                 <Route index element={<Photos />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/wrapped" element={<Wrapped />} />
                 <Route path="/rules" element={<Rules />} />
               </Route>
               <Route path="/login" element={<Login />} />

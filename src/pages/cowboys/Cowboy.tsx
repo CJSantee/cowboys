@@ -29,8 +29,11 @@ export default function Cowboy() {
         {cowboy.photos.map((photo) => (
           <CowboyPhoto
             key={photo.photo_id}
-            cowboy_id={cowboy.cowboy_id}
-            photo={{ ...photo, is_public: cowboy.is_public }}
+            photo_url={photo.photo_url}
+            score_date={photo.score_date}
+            is_public={cowboy.is_public}
+            cowboys={[{ cowboy_id: cowboy.cowboy_id, nickname: cowboy.nickname, points: photo.points }]}
+            show_stickers
           />
         ))}
       </div>

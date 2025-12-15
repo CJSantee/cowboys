@@ -1,6 +1,5 @@
 import usePhotos from '../hooks/queries/usePhotos';
 import { useState, useEffect, useCallback } from 'react';
-import Image from './Image';
 import { useSwipeable } from 'react-swipeable';
 import Loading from './Loading';
 import CowboyPhoto from './CowboyPhoto';
@@ -58,22 +57,22 @@ export default function Photos() {
           {photos.map((photo, index) => (
             <CowboyPhoto
               key={`photo-${index}`}
-              cowboy_id={photo.cowboys.length > 0 ? photo.cowboys[0].cowboy_id : null}
-              photo={{
-                alt_photos: [],
-                points: photo.cowboys.reduce((acc, curr) => acc + curr.points, 0),
-                ...photo,
-              }}
+              cowboys={photo.cowboys}
+              photo_url={photo.photo_url}
+              score_date={photo.score_date}
+              is_public={photo.is_public}
+              show_points
             />
           ))}
         </div>
       ) : (
         <>
-          <Image
+          <CowboyPhoto
             photo_url={photos[photoIndex].photo_url}
             cowboys={photos[photoIndex].cowboys}
-            date={photos[photoIndex].score_date}
+            score_date={photos[photoIndex].score_date}
             is_public={photos[photoIndex].is_public}
+            show_points
           />
           <div className="flex justify-center items-center text-sm mt-2">
             <p>Swipe to view more photos</p>

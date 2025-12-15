@@ -12,3 +12,5 @@ export const photoKeys = {
 export const leaderboard = ['leaderboard'] as const;
 
 export const charter = ['charter'] as const;
+
+export const wrapped = ['wrapped'] as const;

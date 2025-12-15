@@ -1,9 +1,11 @@
+import { useSession } from '@cjsantee/pondero-client';
 import clsx from 'clsx';
 import { useLocation, useNavigate } from 'react-router';
 
 export default function NavBar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useSession();
 
   const pages = [
     {
@@ -22,6 +24,11 @@ export default function NavBar() {
       href: '/leaderboard',
     },
     {
+      id: 'wrapped',
+      title: 'Wrapped',
+      href: '/wrapped',
+    },
+    {
       id: 'rules',
       title: 'Rules',
       href: '/rules',
@@ -30,7 +37,7 @@ export default function NavBar() {
 
   return (
     <div className="flex justify-between w-full px-5 mb-2">
-      {pages.map((page) => {
+      {pages.filter((page) => page.id !== 'wrapped' || user?.user_id === 1).map((page) => {
         return (
           <div
             key={page.id}
@@ -39,8 +46,8 @@ export default function NavBar() {
                 location.pathname === '/'
                   ? page.href === location.pathname
                   : location.pathname !== '/' &&
-                    page.href !== '/' &&
-                    location.pathname.startsWith(page.href),
+                  page.href !== '/' &&
+                  location.pathname.startsWith(page.href),
             })}
             onClick={() => navigate(page.href)}>
             <h3>{page.title}</h3>

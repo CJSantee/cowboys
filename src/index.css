@@ -29,3 +29,26 @@ html,
 body {
   overflow: hidden;
 }
+
+@keyframes equalize {
+  0% {
+    height: 10px;
+  }
+  50% {
+    height: 25px;
+  }
+  100% {
+    height: 10px;
+  }
+}
+
+@keyframes scroll-text {
+  0% {
+    left: 100%;
+    transform: translateX(0);
+  }
+  100% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}

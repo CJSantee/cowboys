@@ -7,6 +7,7 @@ import { CowboyId } from "../../types";
 export interface Wrapped {
   states: {
     state: string;
+    name: string;
     latitude: number;
     longitude: number;
   }[],

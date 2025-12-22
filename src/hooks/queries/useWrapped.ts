@@ -26,6 +26,19 @@ export interface Wrapped {
       nickname: string;
     }[]
   }[],
+  llywd: {
+    photo_url: string;
+    score_date: string;
+    cowboys: {
+      cowboy_id: CowboyId;
+      nickname: string;
+    }[]
+  }[],
+  score_days: {
+    score_date: string;
+    week: string;
+    num_cowboys: number;
+  }[]
 }
 export default function useWrapped() {
   const { access_token, loading } = useSession();

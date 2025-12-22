@@ -6,8 +6,12 @@ import States from '../pages/wrapped/components/States';
 import headsCarolina from '../assets/music/Heads Carolina.m4a';
 import saveAHorse from '../assets/music/Save a horse ride a cowboy.m4a';
 import drinkInMyHand from '../assets/music/Drink in my hand.m4a';
+import liveLikeYouWereDying from '../assets/music/Live Like You Were Dying.m4a';
+import huntinFishinAndLovinEveryDay from "../assets/music/Huntin', Fishin' And Lovin' Every Day.m4a";
 import Horses from '../pages/wrapped/components/Horses';
 import Drinks from '../pages/wrapped/components/Drinks';
+import LLYWD from '../pages/wrapped/components/LLYWD';
+import Days from '../pages/wrapped/components/Days';
 
 
 // Fallback X icon if heroicons is not installed or configured
@@ -51,6 +55,14 @@ const steps: Record<string, StepData> = {
   drinks: {
     song_title: "Drink In My Hand - Eric Church",
     audioSrc: drinkInMyHand,
+  },
+  llywd: {
+    song_title: "Live Like You Were Dying - Tim McGraw",
+    audioSrc: liveLikeYouWereDying,
+  },
+  days: {
+    song_title: "Huntin', Fishin' And Lovin' Every Day - Luke Bryan",
+    audioSrc: huntinFishinAndLovinEveryDay,
   },
 } as const;
 
@@ -189,6 +201,12 @@ export default function WrappedModal({ open, onClose }: WrappedModalProps) {
                 )}
                 {activeStep === 'drinks' && (
                   <Drinks drinks={wrapped.drinks} />
+                )}
+                {activeStep === 'llywd' && (
+                  <LLYWD llywd={wrapped.llywd} />
+                )}
+                {activeStep === 'days' && (
+                  <Days days={wrapped?.score_days} />
                 )}
               </div>
 

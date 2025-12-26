@@ -1,5 +1,5 @@
 import Modal from '../../../components/Modal';
-
+import Icon from '../../../components/Icon';
 export interface WelcomeModalProps {
   open: boolean;
   onClose: () => void;
@@ -7,6 +7,9 @@ export interface WelcomeModalProps {
 export default function WelcomeModal({ open, onClose }: WelcomeModalProps) {
   return (
     <Modal open={open} onClose={onClose}>
+      <button onClick={onClose} className="absolute top-4 right-4 z-10 hover:text-gray-300 focus:outline-none">
+        <Icon name="close" size={6} />
+      </button>
       <div style={{ fontFamily: "'Times New Roman', Times, serif" }} className="text-center">
         <h2 className="text-xl font-bold">Welcome to CowboyCounter.com 🤠</h2>
         <p>

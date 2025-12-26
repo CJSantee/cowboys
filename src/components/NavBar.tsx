@@ -1,6 +1,7 @@
 import { useSession } from '@cjsantee/pondero-client';
 import clsx from 'clsx';
 import { useLocation, useNavigate } from 'react-router';
+import { isCompetitionOver } from '../utils';
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function NavBar() {
 
   return (
     <div className="flex justify-between w-full px-5 mb-2">
-      {pages.filter((page) => page.id !== 'wrapped' || user?.user_id === 1).map((page) => {
+      {pages.filter((page) => page.id !== 'wrapped' || user?.user_id === 1 || isCompetitionOver()).map((page) => {
         return (
           <div
             key={page.id}

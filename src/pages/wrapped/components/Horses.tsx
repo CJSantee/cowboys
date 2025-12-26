@@ -22,7 +22,7 @@ export default function Horses({ horses }: { horses: Wrapped['horses'] }) {
                 cowboys={horse.cowboys}
                 show_points
                 is_public
-                className="h-full w-[80vw]"
+                className="h-full w-[80vw] shadow-xl"
               />
             </div>
           ))}

@@ -4,6 +4,8 @@ import { wrapped } from "./queryKeys";
 import { useSession } from "@cjsantee/pondero-client";
 import { CowboyId } from "../../types";
 
+export type Activity = 'skydiving' | 'rockies' | 'bull' | 'eagle' | 'love';
+
 export interface Wrapped {
   states: {
     state: string;
@@ -28,13 +30,15 @@ export interface Wrapped {
     }[]
   }[],
   llywd: {
-    photo_url: string;
-    score_date: string;
-    cowboys: {
-      cowboy_id: CowboyId;
-      nickname: string;
+    [key in Activity]: {
+      photo_url: string;
+      score_date: string;
+      cowboys: {
+        cowboy_id: CowboyId;
+        nickname: string;
+      }[]
     }[]
-  }[],
+  },
   score_days: {
     score_date: string;
     week: string;

@@ -22,7 +22,7 @@ export default function Drinks({ drinks }: { drinks: Wrapped['drinks'] }) {
                 cowboys={drink.cowboys}
                 show_points
                 is_public
-                className="h-full w-[80vw]"
+                className="h-full w-[80vw] shadow-xl"
               />
             </div>
           ))}

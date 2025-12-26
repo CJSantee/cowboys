@@ -12,14 +12,7 @@ import Horses from '../pages/wrapped/components/Horses';
 import Drinks from '../pages/wrapped/components/Drinks';
 import LLYWD from '../pages/wrapped/components/LLYWD';
 import Days from '../pages/wrapped/components/Days';
-
-
-// Fallback X icon if heroicons is not installed or configured
-const CloseIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-  </svg>
-);
+import Icon from './Icon';
 
 const ChevronLeftIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -44,13 +37,17 @@ interface StepData {
 }
 
 const steps: Record<string, StepData> = {
-  states: {
-    song_title: "Heads Carolina - Jo Dee Messina",
-    audioSrc: headsCarolina,
+  days: {
+    song_title: "Huntin', Fishin' And Lovin' Every Day - Luke Bryan",
+    audioSrc: huntinFishinAndLovinEveryDay,
   },
   horses: {
     song_title: "Save a Horse (Ride a Cowboy) - Big & Rich",
     audioSrc: saveAHorse,
+  },
+  states: {
+    song_title: "Heads Carolina - Jo Dee Messina",
+    audioSrc: headsCarolina,
   },
   drinks: {
     song_title: "Drink In My Hand - Eric Church",
@@ -59,10 +56,6 @@ const steps: Record<string, StepData> = {
   llywd: {
     song_title: "Live Like You Were Dying - Tim McGraw",
     audioSrc: liveLikeYouWereDying,
-  },
-  days: {
-    song_title: "Huntin', Fishin' And Lovin' Every Day - Luke Bryan",
-    audioSrc: huntinFishinAndLovinEveryDay,
   },
 } as const;
 
@@ -163,7 +156,7 @@ export default function WrappedModal({ open, onClose }: WrappedModalProps) {
               className={clsx("absolute top-4 right-4 z-10 hover:text-gray-300 focus:outline-none", activeStep === 'welcome' ? 'text-white' : 'text-black')}
               aria-label="Close"
             >
-              <CloseIcon />
+              <Icon name='close' size={6} />
             </button>
             <div className={clsx("flex flex-col items-center justify-center h-full w-full", activeStep === 'welcome' ? 'text-white' : 'text-black')}>
               {activeStep !== 'welcome' && (
@@ -186,27 +179,27 @@ export default function WrappedModal({ open, onClose }: WrappedModalProps) {
                     <h1 className="text-4xl font-bold mb-4">Cowboy Counter Wrapped</h1>
                     <p className="text-xl mb-8">1/12/2025 - 1/12/2026</p>
                     <button
-                      onClick={() => setActiveStep('states')}
+                      onClick={() => setActiveStep('days')}
                       className="px-8 py-3 bg-white text-black font-bold rounded-full text-lg hover:scale-105 transition-transform"
                     >
                       Enter
                     </button>
                   </div>
                 )}
-                {activeStep === 'states' && (
-                  <States states={wrapped.states} />
+                {activeStep === 'days' && (
+                  <Days days={wrapped?.score_days} />
                 )}
                 {activeStep === 'horses' && (
                   <Horses horses={wrapped.horses} />
+                )}
+                {activeStep === 'states' && (
+                  <States states={wrapped.states} />
                 )}
                 {activeStep === 'drinks' && (
                   <Drinks drinks={wrapped.drinks} />
                 )}
                 {activeStep === 'llywd' && (
                   <LLYWD llywd={wrapped.llywd} />
-                )}
-                {activeStep === 'days' && (
-                  <Days days={wrapped?.score_days} />
                 )}
               </div>
 

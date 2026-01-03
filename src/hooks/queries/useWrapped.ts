@@ -4,7 +4,7 @@ import { wrapped } from "./queryKeys";
 import { useSession } from "@cjsantee/pondero-client";
 import { CowboyId } from "../../types";
 
-export type Activity = 'skydiving' | 'rockies' | 'bull' | 'eagle' | 'love';
+export type Activity = 'skydiving' | 'rockies' | 'bull' | 'eagle' | 'love' | 'speak';
 
 export interface Wrapped {
   states: {

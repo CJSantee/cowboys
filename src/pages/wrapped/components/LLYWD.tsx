@@ -11,14 +11,14 @@ export default function LLYWD({ llywd }: { llywd: Wrapped['llywd'] }) {
     { id: 'rockies', label: '🏔️ Went Rocky Mountain Climbin' },
     { id: 'bull', label: '🐂 Went 2.7 Seconds on a Bull Named Fu Man Chu' },
     { id: 'eagle', label: '🦅 Watched an eagle as it was flyin' },
-    { id: 'love', label: '❤️ Loved deeper' }
+    { id: 'love', label: '❤️ Loved deeper' },
+    { id: 'speak', label: '🗣️ Spoke sweeter' },
   ];
 
   return (
     <div className="flex-1 flex flex-col w-full px-2 h-full">
       <div className="w-full py-2 text-center shrink-0">
-        <h2 className="text-3xl font-bold mb-2">This year</h2>
-        <h2 className="text-3xl font-bold mt-2">The cowboys...</h2>
+        <h2 className="text-3xl font-bold mb-2">This year the cowboys...</h2>
       </div>
       <div className="flex-1 flex flex-col justify-center overflow-hidden">
         {!activity ? (

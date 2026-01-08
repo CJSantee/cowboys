@@ -22,7 +22,7 @@ export default function LLYWD({ llywd }: { llywd: Wrapped['llywd'] }) {
       </div>
       <div className="flex-1 flex flex-col justify-center overflow-hidden">
         {!activity ? (
-          <div className="flex flex-col gap-3 px-4">
+          <div className="flex flex-col gap-3 px-4 overflow-y-scroll">
             {activities.map((item) => (
               <button
                 key={item.id}

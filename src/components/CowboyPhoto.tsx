@@ -21,7 +21,15 @@ interface CowboyPhotoProps {
   className?: string;
 }
 
-export default function CowboyPhoto({ photo_url, score_date, is_public, cowboys, show_stickers = false, show_points = false, className }: CowboyPhotoProps) {
+export default function CowboyPhoto({
+  photo_url,
+  score_date,
+  is_public,
+  cowboys,
+  show_stickers = false,
+  show_points = false,
+  className,
+}: CowboyPhotoProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const { user } = useSession();
   const navigate = useNavigate();
@@ -42,7 +50,11 @@ export default function CowboyPhoto({ photo_url, score_date, is_public, cowboys,
   }, [modalOpen]);
 
   return (
-    <div className={clsx("bg-white px-2 pt-2 box-border rounded border border-gray-300 flex flex-col relative", className)}>
+    <div
+      className={clsx(
+        'bg-white px-2 pt-2 box-border rounded border border-gray-300 flex flex-col relative',
+        className
+      )}>
       {show_stickers && points === 5 && (
         <div
           className="absolute bg-yellow-300 text-black text-xs font-bold px-2 py-0.5 rounded shadow z-10 flex items-center"
@@ -69,10 +81,7 @@ export default function CowboyPhoto({ photo_url, score_date, is_public, cowboys,
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
           onClick={() => setModalOpen(false)}>
-          <img
-            src={photo_url}
-            className="max-w-full max-h-full"
-          />
+          <img src={photo_url} className="max-w-full max-h-full" />
           {!user && !is_public && (
             <div className="absolute bottom-10 bg-white bg-opacity-90 text-gray-800 text-center px-4 py-2 rounded">
               Sorry, only cowboys can view this photo
@@ -84,18 +93,14 @@ export default function CowboyPhoto({ photo_url, score_date, is_public, cowboys,
         <div className="w-full h-full flex items-start justify-between min-h-[40px]">
           <div className="flex flex-col">
             {cowboys.map((cowboy) => (
-              <div key={`cowboy-${cowboy.cowboy_id}`}>
-                <div
-                  className="flex items-center gap-1"
-                  onClick={() => navigate(`/cowboys/${cowboy.nickname}`)}>
-                  <HatIcon cowboy_id={cowboy.cowboy_id} />
-                  <span>{cowboy.nickname}</span>
-                  {cowboy.points !== undefined && (
-                    <span className="text-sm text-gray-500">+{cowboy.points}</span>
-                  )}
-                </div>
-                {cowboy.points === 0 && (
-                  <span className="text-xs text-gray-500">(Points already scored for this day)</span>
+              <div
+                key={`cowboy-${cowboy.cowboy_id}`}
+                className="flex items-center gap-1"
+                onClick={() => navigate(`/cowboys/${cowboy.nickname}`)}>
+                <HatIcon cowboy_id={cowboy.cowboy_id} />
+                <span>{cowboy.nickname}</span>
+                {cowboy.points !== undefined && (
+                  <span className="text-sm text-gray-500">+{cowboy.points}</span>
                 )}
               </div>
             ))}

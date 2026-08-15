@@ -1,5 +1,5 @@
-import { useSession } from "@cjsantee/pondero-client";
-import React from "react";
+import { useSession } from '@cjsantee/pondero-client';
+import React from 'react';
 
 interface AuthComponentProps {
   children: React.ReactNode;
@@ -8,8 +8,8 @@ interface AuthComponentProps {
 export default function AuthComponent({ children, UnauthenticatedComponent }: AuthComponentProps) {
   const session = useSession();
 
-  if(session.loading || !session.user) {
-    return UnauthenticatedComponent ? <UnauthenticatedComponent /> : <React.Fragment />
+  if (session.loading || !session.user) {
+    return UnauthenticatedComponent ? <UnauthenticatedComponent /> : <React.Fragment />;
   }
 
   return children;

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import NavBar from '../components/NavBar';
-import { useSession } from '@cjsantee/pondero-client';
+import useSession from '../hooks/useSession';
 import { useEffect, useState } from 'react';
 import WelcomeModal from './home/components/WelcomeModal';
 

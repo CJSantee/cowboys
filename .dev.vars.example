@@ -1,0 +1,3 @@
+# Copy to .dev.vars for local development. In production: npx wrangler secret put SESSION_SECRET
+# Signs session cookies. Generate one with: openssl rand -base64 32
+SESSION_SECRET=

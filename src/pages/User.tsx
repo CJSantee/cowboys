@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import Button from "../components/Button";
-import { useSession } from "@cjsantee/pondero-client";
+import useSession from "../hooks/useSession";
 
 export default function User() {
   const { username } = useParams();

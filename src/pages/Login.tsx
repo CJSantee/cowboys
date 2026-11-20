@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import { useSession } from '@cjsantee/pondero-client';
+import useSession from '../hooks/useSession';
 import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
@@ -16,7 +16,6 @@ export default function Login() {
     const { success, error } = await signIn({
       username,
       password,
-      rememberMe: true,
     });
     if (success) {
       navigate('/');

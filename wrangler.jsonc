@@ -28,7 +28,6 @@
       // No database_id: Wrangler provisions the database on first deploy and writes the id back.
       "migrations_dir": "migrations"
     }
-  ]
-  // Add the cowboycounter.com custom domain at cutover:
-  // "routes": [{ "pattern": "cowboycounter.com", "custom_domain": true }, { "pattern": "www.cowboycounter.com", "custom_domain": true }]
+  ],
+  "routes": [{ "pattern": "cowboys.colinsantee.com", "custom_domain": true }]
 }

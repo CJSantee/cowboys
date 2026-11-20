@@ -183,7 +183,9 @@ npm run deploy
 The first deploy creates the `cowboy-counter` D1 database. After that:
 
 1. Set the session secret: `npx wrangler secret put SESSION_SECRET` (any long random string, such as `openssl rand -base64 32`).
-2. Run step 2 of [Data](#-data) with `--remote`. To serve `cowboycounter.com`, add the custom domain routes noted in `wrangler.jsonc`, then retire the Vercel project and `vercel.json`.
+2. Run step 2 of [Data](#-data) with `--remote`.
+
+The Worker is served at [cowboys.colinsantee.com](https://cowboys.colinsantee.com) through the custom domain route in `wrangler.jsonc`. Cloudflare creates the DNS record and certificate on deploy, as long as `colinsantee.com` is a zone on the same Cloudflare account.
 
 ## 🤝 Contributing
 
@@ -198,7 +200,7 @@ Private repository - All rights reserved.
 **Current Phase**: Complete (read-only archive)  
 **End Date**: January 12, 2026 at 6:06 PM CT  
 **Participants**: 5 Cowboys  
-**Current Leader**: Check the leaderboard at [cowboycounter.com](https://cowboycounter.com)
+**Current Leader**: Check the leaderboard at [cowboys.colinsantee.com](https://cowboys.colinsantee.com)
 
 ---
 

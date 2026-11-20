@@ -1,0 +1,34 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cowboy-counter",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "upload_source_maps": true,
+  "observability": { "enabled": true },
+  "assets": {
+    // The Cloudflare Vite plugin points this at the client build output.
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "ratelimits": [
+    {
+      // Login attempts, keyed separately by IP and by username. Each attempt runs
+      // a bcrypt check (~55 ms CPU), so this also caps CPU spent on guessing.
+      "name": "LOGIN_RATE_LIMITER",
+      "namespace_id": "4171",
+      "simple": { "limit": 10, "period": 60 }
+    }
+  ],
+  // Secrets (set with `wrangler secret put`, or in .dev.vars locally):
+  //   SESSION_SECRET: signs session cookies. Any long random string.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cowboy-counter",
+      // No database_id: Wrangler provisions the database on first deploy and writes the id back.
+      "migrations_dir": "migrations"
+    }
+  ]
+  // Add the cowboycounter.com custom domain at cutover:
+  // "routes": [{ "pattern": "cowboycounter.com", "custom_domain": true }, { "pattern": "www.cowboycounter.com", "custom_domain": true }]
+}

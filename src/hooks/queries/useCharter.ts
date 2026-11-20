@@ -1,7 +1,7 @@
-import { api, ServerError, useSession } from '@cjsantee/pondero-client';
 import { useQuery } from '@tanstack/react-query';
 import { charter } from './queryKeys';
 import { CowboyId } from '../../types';
+import { getJson } from '../../utils/api';
 
 interface CowboyCharter {
   cowboy_charter_version_id: number;
@@ -12,20 +12,11 @@ interface CowboyCharter {
  * Custom hook to fetch the cowboy charter assents.
  */
 export default function useCharter() {
-  const { access_token } = useSession();
   return useQuery({
     queryKey: charter,
     queryFn: async () => {
-      const { success, error, data } = await api.get<{ charter: CowboyCharter }>(
-        '/public/cowboys/charter',
-        {
-          access_token,
-        }
-      );
-      if (success) {
-        return data.charter;
-      }
-      throw new ServerError(error);
+      const { charter } = await getJson<{ charter: CowboyCharter }>('/cowboys/charter');
+      return charter;
     },
     retry: false,
   });

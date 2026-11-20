@@ -1,16 +1,10 @@
-import { useSession } from '@cjsantee/pondero-client';
 import HatIcon from '../../components/HatIcon';
 import useCharter from '../../hooks/queries/useCharter';
-import Button from '../../components/Button';
-import useAssentCharter from '../../hooks/mutations/useAssentCharter';
 import VersionOne from '../../components/charter/VersionOne';
 import AmmendmentThree from '../../components/charter/AmmendmentThree';
 
 export default function Rules() {
-  const { user } = useSession();
   const { data: cowboyAssents, isLoading } = useCharter();
-
-  const assentCharter = useAssentCharter();
 
   if (isLoading || !cowboyAssents) {
     return <div>Loading...</div>;
@@ -38,18 +32,6 @@ export default function Rules() {
                 <span className="ml-1">{name}</span>
               </div>
             ))}
-          {user && !cowboyAssents.cowboys.some(({ user_id }) => user_id === user.user_id) && (
-            <div className="mt-4 flex justify-center">
-              <Button
-                onClick={() =>
-                  assentCharter.mutate({
-                    cowboy_charter_version_id: cowboyAssents.cowboy_charter_version_id,
-                  })
-                }
-                title="Sign Charter"
-              />
-            </div>
-          )}
         </div>
       </div>
     </div>

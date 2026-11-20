@@ -1,4 +1,4 @@
-import { aclHasPermission, useSession } from '@cjsantee/pondero-client';
+import useSession from '../../hooks/useSession';
 import Article from './Article';
 import Paragraph from './Paragraph';
 import Section from './Section';
@@ -6,7 +6,8 @@ import Section from './Section';
 export default function AmmendmentThree() {
   const { user } = useSession();
 
-  const isCowboy = aclHasPermission(user?.acl ?? 'invalid', 'cowboy');
+  // Only cowboys can sign in.
+  const isCowboy = user !== null;
 
   return (
     <Article number="III" title="Private Gatherings" ammendment>

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import HatIcon from "../assets/Icon.png";
 import Button from "./Button";
-import { useSession } from "@cjsantee/pondero-client";
+import useSession from "../hooks/useSession";
 import Icon from "./Icon";
 
 export default function Header() {

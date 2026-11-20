@@ -1,4 +1,4 @@
-import { useSession } from '@cjsantee/pondero-client';
+import useSession from '../hooks/useSession';
 import React from 'react';
 
 interface AuthComponentProps {

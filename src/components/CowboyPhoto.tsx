@@ -3,7 +3,7 @@ import { CowboyId } from '../types';
 import { parseDate } from '../utils';
 import HatIcon from './HatIcon';
 import TimMcGraw from '../assets/TimMcGraw.png';
-import { useSession } from '@cjsantee/pondero-client';
+import useSession from '../hooks/useSession';
 import { useNavigate } from 'react-router';
 import clsx from 'clsx';
 

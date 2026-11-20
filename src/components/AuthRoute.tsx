@@ -1,4 +1,4 @@
-import { useSession } from "@cjsantee/pondero-client";
+import useSession from "../hooks/useSession";
 import { Navigate, useLocation } from "react-router";
 
 interface AuthRouteProps {

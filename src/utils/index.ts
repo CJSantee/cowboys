@@ -20,10 +20,6 @@ export function parseDate(dateString: string) {
   }
 }
 
-export function convertDate(date: Date) {
-  return format(date, 'yyyy-MM-dd');
-}
-
 export function isCompetitionOver() {
   return isBefore(COMPETITION_END_DATE, new Date());
 }

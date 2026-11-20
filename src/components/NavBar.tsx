@@ -1,4 +1,4 @@
-import { useSession } from '@cjsantee/pondero-client';
+import useSession from '../hooks/useSession';
 import clsx from 'clsx';
 import { useLocation, useNavigate } from 'react-router';
 import { isCompetitionOver } from '../utils';

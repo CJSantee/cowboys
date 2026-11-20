@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { api, ServerError } from "@cjsantee/pondero-client";
 import { wrapped } from "./queryKeys";
-import { useSession } from "@cjsantee/pondero-client";
+import useSession from "../useSession";
 import { CowboyId } from "../../types";
+import { getJson } from "../../utils/api";
 
 export type Activity = 'skydiving' | 'rockies' | 'bull' | 'eagle' | 'love' | 'speak';
 
@@ -46,16 +46,12 @@ export interface Wrapped {
   }[]
 }
 export default function useWrapped() {
-  const { access_token, loading } = useSession();
+  const { loading } = useSession();
   return useQuery({
     queryKey: wrapped,
     queryFn: async () => {
-      const { success, error, data } = await api.get<{ wrapped: Wrapped }>("/public/cowboys/wrapped", { access_token });
-      if (success && data) {
-        const { wrapped } = data;
-        return wrapped;
-      }
-      throw new ServerError(error);
+      const { wrapped } = await getJson<{ wrapped: Wrapped }>('/cowboys/wrapped');
+      return wrapped;
     },
     enabled: !loading,
   });

@@ -28,7 +28,6 @@
       "database_id": "2da59054-3f27-4c27-9f77-470d4b9364b8",
       "migrations_dir": "migrations"
     }
-  ]
-  // Add the cowboycounter.com custom domain at cutover:
-  // "routes": [{ "pattern": "cowboycounter.com", "custom_domain": true }, { "pattern": "www.cowboycounter.com", "custom_domain": true }]
+  ],
+  "routes": [{ "pattern": "cowboys.colinsantee.com", "custom_domain": true }]
 }
